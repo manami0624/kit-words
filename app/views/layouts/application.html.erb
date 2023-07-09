@@ -12,12 +12,33 @@
   <body>
   <body>
     <header class="header">
-    <header class="header">
       <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">KITwords</a></h1>
-        <div class="user_nav grid-6">
-          <a class="post" href="/words/new">単語登録</a>
-        </div>
+        <h1 class="grid-6"><a href="/">KitMaster</a></h1>
+        <% if user_signed_in? %>
+
+          <div class="user_nav grid-6">
+
+          <span><%= "#{current_user.nickname}さん" %>
+            <ul class="user__info">
+              <li>
+                <%# <%= link_to "MY単語帳", user_path(current_user) %> 
+              </li>
+              <li>
+                <%= link_to "単語クイズ", root_path %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </span>
+        <%= link_to "単語登録", new_word_path, class: "post" %>
+          </div>
+        <% else %>
+          <div class="grid-6">
+            <%= link_to "ログイン", new_user_session_path, class: "post" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "post" %>
+          </div>
+        <% end %>
       </div>
     </header>
 
