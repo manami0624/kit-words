@@ -1,8 +1,20 @@
+<% if user_signed_in? %>
   <div class="count">単語クイズ</div>
 <div class="contents row">
   <div class="content_post">
-    <p class="korean-word">모델</p>
-    <p class="japanese-word" style="display: none;">モデル</p>
+    <p class="korean-word"><%= @word[:korean] %></p>
+    <p class="japanese-word" style="display: none;"><%= @word[:japanese] %></p>
   </div>
   <div class="count"><%= link_to "NEXT＞＞", root_path %></div>
 </div>
+
+<% else %>
+  <div class="count">ログインするとオリジナル単語帳が作れるよ！</div>
+<div class="contents row">
+  <div class="content_post">
+    <p class="korean-word"><%= @word[:korean] %></p>
+    <p class="japanese-word" style="display: none;"><%= @word[:japanese] %></p>
+  </div>
+  <div class="count"><%= link_to "NEXT＞＞", root_path %></div>
+</div>
+<% end %>
