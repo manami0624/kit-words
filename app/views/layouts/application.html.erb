@@ -8,10 +8,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
   </head>
 
-  <body>
   <body>
     <header class="header">
       <div class="header__bar row">
@@ -23,12 +21,6 @@
           <span><%= "#{current_user.nickname}さん" %>
             <ul class="user__info">
               <li>
-                <%= link_to "MY単語帳", user_path(current_user) %> 
-              </li>
-              <li>
-                <%= link_to "単語クイズ", root_path %>
-              </li>
-              <li>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               </li>
               <li>
@@ -36,7 +28,11 @@
               </li>
             </ul>
           </span>
-        <%= link_to "単語登録", new_word_path, class: "post" %>
+          <% if current_page?(user_path(current_user)) %>
+            <%= link_to "Quiz", root_path, class: "post" %>
+          <% else %>
+            <%= link_to "MY単語帳", user_path(current_user), class: "post" %>
+          <% end %>
           </div>
         <% else %>
           <div class="grid-6">
