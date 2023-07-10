@@ -12,13 +12,18 @@ class DictionariesController < ApplicationController
   def create
     @dictionary = Dictionary.new(dictionary_params)
     if @dictionary.save
-      redirect_to dictionaries_path, notice: "辞書が作成されました。"
+      redirect_to dictionaries_path
     else
       render :new
     end
     @dictionaries = Dictionary.all
   end
   
+  def destroy
+    dictionary = Dictionary.find(params[:id])
+    redirect_to dictionaries_path, notice: "単語が削除されました。"
+  end
+
 
   private
 
