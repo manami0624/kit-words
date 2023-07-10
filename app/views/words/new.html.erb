@@ -3,8 +3,14 @@
     <h3>単語を登録する</h3>
     <%= form_with(model: @word, local: true) do |form| %>
       <%= form.text_field :korean, placeholder: "Korean" %>
+      <% if @word.errors.include?(:korean) %>
+        <p class="error-message"><%= @word.errors[:korean].first %></p>
+      <% end %>
       <%= form.text_field :japanese, placeholder: "Japanese" %>
-      <%= form.submit "SEND" %>
+      <% if @word.errors.include?(:japanese) %>
+        <p class="error-message"><%= @word.errors[:japanese].first %></p>
+      <% end %>
+      <%= form.submit "登録" %>
     <% end %>
   </div>
 </div>
