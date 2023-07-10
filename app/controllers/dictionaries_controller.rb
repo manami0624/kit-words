@@ -1,4 +1,6 @@
 class DictionariesController < ApplicationController
+  before_action :set_dictionaries, only: [:index, :search]
+
   def index
     @dictionaries = Dictionary.all
     @total_posts = @dictionaries.count
@@ -37,7 +39,27 @@ class DictionariesController < ApplicationController
     end
   end
 
+  def search
+    keyword = params[:keyword].to_s.strip
+    if keyword.empty?
+      redirect_to dictionaries_path
+    else
+      @dictionaries = Dictionary.search(keyword)
+    end
+  end
+
+
   private
+  def set_dictionaries
+    if user_signed_in?
+      user_posts = current_user.dictionaries
+      @total_posts = user_posts.count
+      @dictionaries = user_posts.order(created_at: :asc).page(params[:page])
+    else
+      @total_posts = Dictionary.count
+      @dictionaries = Dictionary.order(created_at: :asc).page(params[:page])
+    end
+  end
 
   def dictionary_params
     params.require(:dictionary).permit(:vocabulary, :meaning).merge(user_id: current_user.id)
