@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :words, :dependent => :destroy
+  has_many :dictionaries, :dependent => :destroy
 
   validates :nickname, presence: true, length: { maximum: 6 }
   

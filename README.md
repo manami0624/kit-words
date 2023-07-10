@@ -24,3 +24,16 @@
 ### Association
 
 - belongs to :user
+
+
+## dictionaries テーブル
+
+| Column       | Type    | Options     |
+| ------------ | ------- | ----------- |
+| vocabulary   | string  | null: false |
+| meaning      | string  | null: false |
+| user_id      | integer | null: false |
+
+### Association
+
+- belongs to :user

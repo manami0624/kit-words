@@ -10,7 +10,7 @@
       <% if @word.errors.include?(:japanese) %>
         <p class="error-message"><%= @word.errors[:japanese].first %></p>
       <% end %>
-      <%= form.submit "編集" %>
+      <%= form.submit "Update" %>
     <% end %>
   </div>
 </div>
