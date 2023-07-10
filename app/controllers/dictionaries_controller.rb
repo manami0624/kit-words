@@ -18,12 +18,24 @@ class DictionariesController < ApplicationController
     end
     @dictionaries = Dictionary.all
   end
-  
+
   def destroy
     dictionary = Dictionary.find(params[:id])
     redirect_to dictionaries_path, notice: "単語が削除されました。"
   end
 
+  def edit
+    @dictionary = Dictionary.find(params[:id])
+  end
+
+  def update
+    @dictionary = Dictionary.find(params[:id])
+    if @dictionary.update(dictionary_params)
+      redirect_to dictionaries_path, notice: "辞書を編集しました。"
+    else
+      render :edit
+    end
+  end
 
   private
 

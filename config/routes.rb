@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show, :destroy]
-  resources :dictionaries, only: [:index, :new, :create, :edit, :destroy]
+  resources :dictionaries, only: [:index, :new, :create, :edit, :update, :destroy]
 end
