@@ -1,0 +1,39 @@
+  
+    <div class="count"><%= current_user.nickname %>さんの辞書は現在<%= @total_posts %>語です</div>
+    <% if @dictionaries.present? %>
+    <div class="words_contents">
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <form class="search_container" action="<%= search_words_path %>" method="get">
+        <input type="text" size="25" name="keyword" class="search-input">
+        <input type="submit" value="&#xf002">
+        <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+    <% end %>
+    <div class="count"><%= link_to "辞書登録", new_dictionary_path, class: "post bordered-link"%></div>
+    </div>
+    <div class="contents row">
+      <% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
+
+<div class="content_post">
+  <div class="more">
+    <span><%= image_tag 'pencil.png' %></span>
+    <ul class="more_list">
+      <li>
+        <%= link_to '編集', edit_dictionary_path(dictionary.id) %>
+      </li>
+      <li>
+        <%= link_to '削除', dictionary_path(dictionary.id), method: :delete, data: { confirm: 'この単語を削除しますか？' }  %>
+      </li>
+    </ul>
+  </div>
+  <p class="korean-word"><%= dictionary.vocabulary %></p>
+  <p class="japanese-word" style="display: none;"><%= dictionary.meaning %></p>
+</div>
+
+
+      <% end %>
+      <%# <div class="page"><%= paginate @dictionary %>
+      <%# </div>  %>
+    </div>
+
