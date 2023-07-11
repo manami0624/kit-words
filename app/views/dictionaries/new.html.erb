@@ -3,7 +3,13 @@
     <h3>辞書を登録する</h3>
     <%= form_with(model: @dictionary, local: true) do |form| %>
       <%= form.text_field :vocabulary, placeholder: "単語" %>
+      <% if @dictionary.errors.include?(:vocabulary) %>
+        <p class="error-message"><%= @dictionary.errors[:vocabulary].first %></p>
+        <% end %>
       <%= form.text_area :meaning, placeholder: "意味", rows: 4 %>
+      <% if @dictionary.errors.include?(:meaning) %>
+        <p class="error-message"><%= @dictionary.errors[:meaning].first %></p>
+      <% end %>
       <%= form.submit "登録" %>
     <% end %>
   </div>
