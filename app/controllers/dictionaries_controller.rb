@@ -23,6 +23,7 @@ class DictionariesController < ApplicationController
 
   def destroy
     dictionary = Dictionary.find(params[:id])
+    dictionary.destroy
     redirect_to dictionaries_path, notice: "単語が削除されました。"
   end
 

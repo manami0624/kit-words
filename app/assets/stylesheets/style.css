@@ -1056,3 +1056,8 @@ footer p {
   top: -10px;
   outline : none;
 }
+
+.japanese-word{
+  font-size: 30px;
+  padding: 100px 50px;
+}
