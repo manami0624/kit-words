@@ -3,9 +3,10 @@ class DictionariesController < ApplicationController
 
   def index
     @dictionaries = Dictionary.all
-    @total_posts = @dictionaries.count
-    @dictionaries = Dictionary.all.order(created_at: :desc).page(params[:page])
+    @dictionaries = current_user.dictionaries.order(created_at: :desc).page(params[:page])
+    @total_posts = @dictionaries.total_count
   end
+  
 
   def new
     @dictionary = Dictionary.new

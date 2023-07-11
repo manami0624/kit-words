@@ -12,26 +12,8 @@
     <div class="count"><%= link_to "辞書登録", new_dictionary_path, class: "post bordered-link"%></div>
     </div>
     <div class="contents row">
-
-
-<% @dictionaries.each do |dictionary| %>
-<div class="content_post">
-  <div class="more">
-    <span><%= image_tag 'pencil.png' %></span>
-    <ul class="more_list">
-      <li>
-        <%= link_to '編集', edit_dictionary_path(dictionary.id) %>
-      </li>
-      <li>
-        <%= link_to '削除', dictionary_path(dictionary.id), method: :delete, data: { confirm: 'この単語を削除しますか？' }  %>
-      </li>
-    </ul>
-  </div>
-  <p class="korean-word"><%= dictionary.vocabulary %></p>
-  <div class="japanese-word" style="display: none;"><%= dictionary.meaning %></div>
-</div>
-
-
+      <% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
+      <%= render partial: "dictionary", locals: { dictionary: dictionary } %>
       <% end %>
       <div class="page"><%= paginate @dictionaries %></div>
     </div>
