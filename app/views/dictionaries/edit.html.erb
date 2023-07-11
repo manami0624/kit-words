@@ -3,7 +3,7 @@
     <h3>辞書を編集する</h3>
     <%= form_with(model: @dictionary, local: true) do |form| %>
       <%= form.text_field :vocabulary, placeholder: "単語" %>
-      <%= form.text_field :meaning, placeholder: "意味" %>
+      <%= form.text_area :meaning, placeholder: "意味", rows: 4 %>
       <%= form.submit "Update" %>
     <% end %>
   </div>
