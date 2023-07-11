@@ -19,20 +19,37 @@
           <div class="user_nav grid-6">
 
           <span><%= "#{current_user.nickname}さん" %>
-            <ul class="user__info">
+          <ul class="user__info">
+            <% if current_page?(root_path) %>
+              <% menu_links = [
+                { label: "単語帳", path: user_path(current_user) },
+                { label: "韓韓辞書", path: dictionaries_path(current_user) }
+              ] %>
+            <% elsif current_page?(user_path(current_user)) %>
+              <% menu_links = [
+                { label: "Quiz", path: root_path },
+                { label: "韓韓辞書", path: dictionaries_path(current_user) }
+              ] %>
+            <% else %>
+              <% menu_links = [
+                { label: "Quiz", path: root_path },
+                { label: "単語帳", path: user_path(current_user) }
+              ] %>
+            <% end %>
+
+            <% menu_links.each do |link| %>
               <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to link[:label], link[:path] %>
               </li>
-              <li>
-                <%= link_to "退会", user_path(current_user.id), class: "destroy-user", method: :delete, "data-confirm" => "本当に退会しますか？" %>
-              </li>
-            </ul>
+            <% end %>
+
+            <li>
+              <%= link_to "退会", user_path(current_user.id), class: "destroy-user", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+            </li>
+          </ul>
+
           </span>
-          <% if current_page?(user_path(current_user)) %>
-            <%= link_to "Quiz", root_path, class: "post" %>
-          <% else %>
-            <%= link_to "MY単語帳", user_path(current_user), class: "post" %>
-          <% end %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "post" %>
           </div>
         <% else %>
           <div class="grid-6">
