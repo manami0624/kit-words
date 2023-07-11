@@ -1,12 +1,11 @@
 class DictionariesController < ApplicationController
   before_action :set_dictionaries, only: [:index, :search]
+  before_action :set_dictionary, only: [:destroy, :edit, :update]
 
   def index
-    @dictionaries = Dictionary.all
     @dictionaries = current_user.dictionaries.order(created_at: :desc).page(params[:page])
     @total_posts = @dictionaries.total_count
   end
-  
 
   def new
     @dictionary = Dictionary.new
@@ -19,21 +18,17 @@ class DictionariesController < ApplicationController
     else
       render :new
     end
-    @dictionaries = Dictionary.all
   end
 
   def destroy
-    dictionary = Dictionary.find(params[:id])
-    dictionary.destroy
+    @dictionary.destroy
     redirect_to dictionaries_path, notice: "単語が削除されました。"
   end
 
   def edit
-    @dictionary = Dictionary.find(params[:id])
   end
 
   def update
-    @dictionary = Dictionary.find(params[:id])
     if @dictionary.update(dictionary_params)
       redirect_to dictionaries_path, notice: "辞書を編集しました。"
     else
@@ -50,17 +45,20 @@ class DictionariesController < ApplicationController
     end
   end
 
-
   private
+
   def set_dictionaries
     if user_signed_in?
-      user_posts = current_user.dictionaries
-      @total_posts = user_posts.count
-      @dictionaries = user_posts.order(created_at: :asc).page(params[:page])
+      @total_posts = current_user.dictionaries.count
+      @dictionaries = current_user.dictionaries.order(created_at: :asc).page(params[:page])
     else
       @total_posts = Dictionary.count
       @dictionaries = Dictionary.order(created_at: :asc).page(params[:page])
     end
+  end
+
+  def set_dictionary
+    @dictionary = Dictionary.find(params[:id])
   end
 
   def dictionary_params
