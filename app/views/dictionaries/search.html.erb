@@ -1,7 +1,7 @@
 <div class="count">
   <% if user_signed_in? %>
     <% user_posts = current_user.dictionaries.search(params[:keyword]) %>
-    検索結果は<%= user_posts.size %>件です
+    "<%= params[:keyword] %>"の検索結果は<%= user_posts.size %>件です
   <% end %>
 </div>
 <div class="words_contents">
@@ -11,7 +11,7 @@
     <input type="submit" value="&#xf002">
     <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
   </form>
-  <div class="count"><%= link_to "辞書登録", new_dictionary_path, class: "post bordered-link"%></div>
+  <div class="count"><%= link_to "韓韓辞書へ戻る", dictionaries_path(current_user), class: "post bordered-link"%></div>
 </div>
 <div class="contents row">
   <% if user_signed_in? %>

@@ -1,16 +1,6 @@
 <div class="contents row">
   <div class="container">
     <h3>単語を編集する</h3>
-    <%= form_with(model: @word, local: true) do |form| %>
-      <%= form.text_field :korean, placeholder: "Korean" %>
-      <% if @word.errors.include?(:korean) %>
-        <p class="error-message"><%= @word.errors[:korean].first %></p>
-      <% end %>
-      <%= form.text_field :japanese, placeholder: "Japanese" %>
-      <% if @word.errors.include?(:japanese) %>
-        <p class="error-message"><%= @word.errors[:japanese].first %></p>
-      <% end %>
-      <%= form.submit "Update" %>
-    <% end %>
+    <%= render "form", word: @word %>
   </div>
 </div>
