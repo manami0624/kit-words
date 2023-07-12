@@ -3,3 +3,6 @@ ja:
     attributes:
       user:
         nickname: ニックネーム
+      word:
+        korean: 韓国語
+        japanese: 日本語
