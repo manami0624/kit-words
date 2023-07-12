@@ -1,9 +1,7 @@
 <%= form_with(model: @dictionary, local: true) do |form| %>
   <%= render 'layouts/error_messages', model: form.object %>
   <%= form.text_field :vocabulary, placeholder: "単語" %>
-    <p class="error-message"><%= @dictionary.errors[:vocabulary].first %></p>
   <%= form.text_area :meaning, placeholder: "意味", rows: 4 %>
-    <p class="error-message"><%= @dictionary.errors[:meaning].first %></p>
   <%= form.submit "登録" %>
 <% end %>
 <%= link_to "<<戻る", dictionaries_path(current_user), class: "back-button" %>
