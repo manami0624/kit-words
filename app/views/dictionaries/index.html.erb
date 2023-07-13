@@ -1,6 +1,5 @@
   
     <div class="count"><%= current_user.nickname %>さんの辞書は現在<%= @total_posts %>語です</div>
-    <% if @dictionaries.present? %>
     <div class="words_contents">
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <form class="search_container" action="<%= search_dictionaries_path %>" method="get">
@@ -8,7 +7,6 @@
         <input type="submit" value="&#xf002">
         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
       </form>
-    <% end %>
       <div class="pencil">
         <%= link_to new_dictionary_path do %>
         <%= image_tag("pencil.png") %>
