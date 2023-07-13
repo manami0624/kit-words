@@ -9,7 +9,11 @@
         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
       </form>
     <% end %>
-    <div class="count"><%= link_to "辞書登録", new_dictionary_path, class: "post bordered-link"%></div>
+      <div class="pencil">
+        <%= link_to new_dictionary_path do %>
+        <%= image_tag("pencil.png") %>
+        <% end %>
+      </div>
     </div>
     <div class="contents row">
       <% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
