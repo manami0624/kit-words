@@ -16,7 +16,7 @@
   <div class="contents row">
     <% @words.each do |word| %>
       <% if current_user.id == word.user_id %>
-      <%= render partial: "users/word", locals: { word: word } %>
+      <%= render partial: "word", locals: { word: word } %>
       <% end %>
     <% end %>
   </div>
