@@ -20,6 +20,9 @@
 
           <span><%= "#{current_user.nickname}さん" %>
           <ul class="user__info">
+            <li>
+              <%= link_to "マイページ", users_path(current_user.id) %>
+            </li>
             <% if current_page?(root_path) %>
               <% menu_links = [
                 { label: "単語帳", path: user_path(current_user) },

@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, :only => [:show, :destroy]
 
+  def index
+  end
+
   def show
     @nickname = current_user.nickname
     @words = current_user.words.page(params[:page]).per(1)

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :users, only: [:show, :destroy]
+  resources :users, only: [:index, :show, :destroy]
   resources :dictionaries, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       get 'search'
