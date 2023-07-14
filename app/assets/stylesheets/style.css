@@ -860,18 +860,55 @@ header.header .user_nav ul li a {
   text-align: center;
 }
 
-.pencil{
-  display: flex;
-  margin-right: 25px;
-  width: 57px;
-  height: auto;
-}
-
-.memo{
+.sort{
   display: flex;
   margin-right: 20px;
   width: 50px;
   height: auto;
+}
+
+.post_nav {
+  display: flex;
+  padding-left: 20px;
+}
+
+.pencil {
+  margin-left: 10px;
+  width: 50px;
+  height: auto;
+}
+
+.memo {
+  margin-right: 10px;
+  width: 48px;
+  height: auto;
+}
+
+.icon-link:after {
+  content: attr(data-text);
+  display: inline-block;
+  font-size: 10px;
+  max-width: 100%; /* テキストの幅が親要素を超えないように制限 */
+  white-space: nowrap; /* テキストが改行されないようにする */
+  overflow: hidden; /* 必要な場合にはテキストを隠す */
+}
+
+.icon-link {
+  position: relative;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  writing-mode: horizontal-tb; /* 横書きにする */
+  white-space: nowrap; /* テキストが改行されないようにする */
+}
+
+.icon-link:hover .text-overlay {
+  display: block;
 }
 
 .words_contents{
