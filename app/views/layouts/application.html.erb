@@ -15,9 +15,7 @@
       <div class="header__bar row">
         <h1 class="grid-6"><a href="/">KITwords</a></h1>
         <% if user_signed_in? %>
-
           <div class="user_nav grid-6">
-
           <span><%= "#{current_user.nickname}さん" %>
           <ul class="user__info">
             <li>
@@ -39,21 +37,34 @@
                 { label: "単語帳", path: user_path(current_user) }
               ] %>
             <% end %>
-
             <% menu_links.each do |link| %>
               <li>
                 <%= link_to link[:label], link[:path] %>
               </li>
             <% end %>
-
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+            </li>
             <li>
               <%= link_to "退会", user_path(current_user.id), class: "destroy-user", method: :delete, "data-confirm" => "本当に退会しますか？" %>
             </li>
           </ul>
-
           </span>
-          <%= link_to "log out", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" }, class: "post" %>
+          <div class="post_nav">
+            <div class="memo">
+              <%= link_to new_word_path, id: "memo-link", class: "icon-link" do %>
+              <%= image_tag("memo.png") %>
+              <div class="text-overlay" style="display: none;">単語登録</div>
+              <% end %>
+            </div>
+            <div class="pencil">
+              <%= link_to new_dictionary_path, id: "pencil-link", class: "icon-link" do %>
+              <%= image_tag("pencil.png") %>
+              <div class="text-overlay" style="display: none;">辞書登録</div>
+              <% end %>
+            </div>
           </div>
+
         <% else %>
           <div class="grid-6">
             <%= link_to "ログイン", new_user_session_path, class: "post" %>
