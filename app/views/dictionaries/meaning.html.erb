@@ -1,0 +1,33 @@
+<div class="count">"<%= @dictionary.vocabulary %>"の意味</div>
+<div class="words_contents">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <form class="search_container" action="<%= search_dictionaries_path %>" method="get">
+    <input type="text" size="25" name="keyword" class="search-input">
+    <input type="submit" value="&#xf002">
+    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+  </form>
+  <a class="meaning-link" data-method="get" href="<%= dictionaries_path %>">戻る</a>
+  <div class="sort">
+    <%= link_to '新しい順', dictionaries_path(latest: "true") %>
+    ｜
+    <%= link_to '古い順', dictionaries_path(old: "true") %>
+    ｜
+    <%= link_to 'ランダム', dictionaries_path(random: "true") %>
+  </div> 
+</div>
+<div class="contents row">
+  <div class="content_post">
+    <div class="more">
+      <span><%= image_tag 'down.png' %></span>
+      <ul class="more_list">
+        <li>
+          <%= link_to '編集', edit_dictionary_path(@dictionary.id) %>
+        </li>
+        <li>
+          <%= link_to '削除', dictionary_path(@dictionary.id), method: :delete, data: { confirm: 'この単語を削除しますか？' }  %>
+        </li>
+      </ul>
+    </div>
+    <div class="meaning"><%= @dictionary.meaning %></div>
+  </div>
+</div>

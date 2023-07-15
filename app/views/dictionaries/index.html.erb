@@ -7,6 +7,11 @@
         <input type="submit" value="&#xf002">
         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
       </form>
+<% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
+  <% if dictionary.meaning.present? %>
+  <%= link_to 'meaning', meaning_path(dictionary_id: dictionary.id) %>
+  <% end %>
+<% end %>
         <div class="sort">
         <%= link_to '新しい順', dictionaries_path(latest: "true") %>
         ｜
