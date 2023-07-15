@@ -14,7 +14,8 @@ ActiveRecord::Schema.define(version: 2023_07_10_131205) do
 
   create_table "dictionaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "vocabulary", null: false
-    t.string "meaning", null: false
+    t.string "japanese", null: false
+    t.string "meaning"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

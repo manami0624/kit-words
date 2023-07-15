@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  get '/dictionaries/meaning', to: 'dictionaries#meaning', as: 'meaning'
   resources :users, only: [:index, :show, :destroy]
   resources :dictionaries, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do

@@ -16,6 +16,10 @@ class DictionariesController < ApplicationController
     end
   end
 
+  def meaning
+    @dictionary = Dictionary.find(params[:dictionary_id])
+  end
+
   def new
     @dictionary = Dictionary.new
   end
@@ -71,6 +75,6 @@ class DictionariesController < ApplicationController
   end
 
   def dictionary_params
-    params.require(:dictionary).permit(:vocabulary, :meaning).merge(user_id: current_user.id)
+    params.require(:dictionary).permit(:vocabulary, :japanese, :meaning).merge(user_id: current_user.id)
   end
 end
