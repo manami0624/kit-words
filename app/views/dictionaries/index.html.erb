@@ -7,7 +7,13 @@
         <input type="submit" value="&#xf002">
         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
       </form>
-      <%# <div class="sort">Sort</div> %>
+        <div class="sort">
+        <%= link_to '新しい順', dictionaries_path(latest: "true") %>
+        ｜
+        <%= link_to '古い順', dictionaries_path(old: "true") %>
+        ｜
+        <%= link_to 'ランダム', dictionaries_path(random: "true") %>
+        </div> 
       </div>
     </div>
     <div class="contents row">
@@ -16,4 +22,3 @@
       <% end %>
       <div class="page"><%= paginate @dictionaries %></div>
     </div>
-

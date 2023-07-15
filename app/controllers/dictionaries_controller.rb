@@ -5,6 +5,15 @@ class DictionariesController < ApplicationController
   def index
     @dictionaries = current_user.dictionaries.order(created_at: :desc).page(params[:page])
     @total_posts = @dictionaries.total_count
+    if params[:latest]
+      @dictionaries = Dictionary.latest.page(params[:page]).per(1)
+    elsif params[:old].present?
+      @dictionaries=Dictionary.old.page(params[:page]).per(1)
+    elsif params[:random].present?
+      @dictionaries = Dictionary.random.page(params[:page]).per(1)
+    else
+      @dictionaries = Dictionary.all.page(params[:page]).per(1)
+    end
   end
 
   def new
