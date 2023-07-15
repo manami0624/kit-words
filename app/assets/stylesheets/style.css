@@ -862,9 +862,9 @@ header.header .user_nav ul li a {
 
 .sort{
   display: flex;
-  margin-right: 20px;
-  width: 50px;
   height: auto;
+  writing-mode: horizontal-tb;
+  white-space: nowrap;
 }
 
 .post_nav {
