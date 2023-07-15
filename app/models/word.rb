@@ -6,8 +6,9 @@ class Word < ApplicationRecord
   
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :random, -> { order('RAND()') }
-  
+  # scope :random, -> { order('RAND()') }
+  scope :random, -> { order('RANDOM()') }
+
   def self.search(search)
     if search != ""
       Word.where(['korean LIKE ? OR japanese LIKE ?', "%#{search}%", "%#{search}%"])
