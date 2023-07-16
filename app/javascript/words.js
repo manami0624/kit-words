@@ -15,11 +15,5 @@ document.addEventListener('DOMContentLoaded', function() {
       koreanElement.style.display = 'block';
       japaneseElement.style.display = 'none';
     });
-
-    post.addEventListener('click', function() {
-      koreanElement.style.display = 'none';
-      japaneseElement.style.display = 'none';
-      meaningElement.style.display = 'block';
-    });
   });
 });

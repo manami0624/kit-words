@@ -1,22 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, :only => [:show, :destroy]
+  before_action :set_user, :only => [:destroy]
 
   def index
-  end
-
-  def show
-    @nickname = current_user.nickname
-    @words = current_user.words.page(params[:page]).per(1)
-    @total_posts = current_user.words.count
-    if params[:latest]
-      @words = Word.latest.page(params[:page]).per(1)
-    elsif params[:old].present?
-      @words=Word.old.page(params[:page]).per(1)
-    elsif params[:random].present?
-      @words = Word.random.page(params[:page]).per(1)
-    else
-      @words = Word.all.page(params[:page]).per(1)
-    end
   end
 
   def destroy
