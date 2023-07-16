@@ -1,7 +1,0 @@
-<%= form_with(model: @word, local: true) do |form| %>
-  <%= render 'layouts/error_messages', model: form.object %>
-  <%= form.text_field :korean, placeholder: "Korean" %>
-  <%= form.text_field :japanese, placeholder: "Japanese" %>
-  <%= form.submit "登録する" %>
-  <% end %>
-  <%= link_to "<<戻る", user_path(current_user), class: "back-button" %>

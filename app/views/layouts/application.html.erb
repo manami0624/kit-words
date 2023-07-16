@@ -18,21 +18,26 @@
           <div class="user_nav grid-6">
           <span><%= "#{current_user.nickname}さん" %>
           <ul class="user__info">
-            <li>
-              <%= link_to "マイページ", users_path(current_user.id) %>
-            </li>
             <% if current_page?(root_path) %>
               <% menu_links = [
-                { label: "韓韓辞書", path: dictionaries_path(current_user) }
+                { label: "マイページ", path: users_path(current_user.id) },
+                { label: "単語帳", path: dictionaries_path(current_user) }
               ] %>
-            <% elsif current_page?(user_path(current_user)) %>
+            <% elsif current_page?(dictionaries_path(current_user))%>
               <% menu_links = [
-                { label: "Quiz", path: root_path },
-                { label: "韓韓辞書", path: dictionaries_path(current_user) }
+                { label: "マイページ", path: users_path(current_user.id) },
+                { label: "Quiz", path: root_path }
+              ] %>
+            <% elsif current_page?(users_path(current_user.id))%>
+              <% menu_links = [
+                { label: "単語帳", path: dictionaries_path(current_user) },
+                { label: "Quiz", path: root_path }
               ] %>
             <% else %>
               <% menu_links = [
-                { label: "Quiz", path: root_path },
+                { label: "マイページ", path: users_path(current_user.id) },
+                { label: "単語帳", path: dictionaries_path(current_user) },
+                { label: "Quiz", path: root_path }
               ] %>
             <% end %>
             <% menu_links.each do |link| %>
@@ -52,7 +57,7 @@
             <div class="memo">
               <%= link_to new_dictionary_path, id: "memo-link", class: "icon-link" do %>
               <%= image_tag("memo.png") %>
-              <div class="text-overlay" style="display: none;">辞書登録</div>
+              <div class="text-overlay" style="display: none;">単語登録</div>
               <% end %>
             </div>
           </div>

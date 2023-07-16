@@ -35,7 +35,7 @@ class DictionariesController < ApplicationController
 
   def destroy
     @dictionary.destroy
-    redirect_to dictionaries_path, notice: "単語が削除されました。"
+    render 'destroy'
   end
 
   def edit
@@ -43,7 +43,7 @@ class DictionariesController < ApplicationController
 
   def update
     if @dictionary.update(dictionary_params)
-      redirect_to dictionaries_path, notice: "辞書を編集しました。"
+      redirect_to dictionaries_path
     else
       render :edit
     end
