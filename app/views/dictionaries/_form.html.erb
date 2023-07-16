@@ -1,7 +1,7 @@
 <%= form_with(model: @dictionary, local: true) do |form| %>
   <%= render 'layouts/error_messages', model: form.object %>
-  <%= form.text_field :vocabulary, placeholder: "韓国語" %>
-  <%= form.text_field :japanese, placeholder: "日本語" %>
+  <%= form.text_field :vocabulary, placeholder: "表面" %>
+  <%= form.text_field :japanese, placeholder: "裏面" %>
   <%= form.text_area :meaning, placeholder: "意味", rows: 4 %>
   <%= form.submit "登録" %>
 <% end %>
