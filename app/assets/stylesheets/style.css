@@ -872,15 +872,9 @@ header.header .user_nav ul li a {
   padding-left: 20px;
 }
 
-.pencil {
-  margin-left: 10px;
-  width: 50px;
-  height: auto;
-}
-
 .memo {
-  margin-right: 10px;
-  width: 48px;
+  margin-left: 60px;
+  width: 45px;
   height: auto;
 }
 

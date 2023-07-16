@@ -7,7 +7,8 @@ ja:
         korean: 韓国語
         japanese: 日本語
       dictionary:
-        vocabulary: 単語
+        vocabulary: 単語帳の表面
+        japanese: 単語帳の裏面
         meaning: 意味
   views:
     pagination:
