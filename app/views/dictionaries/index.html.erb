@@ -1,29 +1,28 @@
-  
-    <div class="count"><%= current_user.nickname %>さんの単語帳は現在<%= @total_posts %>語です</div>
-    <div class="words_contents">
-      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-      <form class="search_container" action="<%= search_dictionaries_path %>" method="get">
-        <input type="text" size="25" name="keyword" class="search-input">
-        <input type="submit" value="&#xf002">
-        <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-      </form>
-<% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
-  <% if dictionary.meaning.present? %>
-  <%= link_to 'meaning', meaning_path(dictionary_id: dictionary.id) %>
+<div class="count"><%= current_user.nickname %>さんの単語帳は現在<%= @total_posts %>語です</div>
+<div class="words_contents">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <form class="search_container" action="<%= search_dictionaries_path %>" method="get">
+    <input type="text" size="25" name="keyword" class="search-input">
+    <input type="submit" value="&#xf002">
+    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+  </form>
+  <% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
+    <% if dictionary.meaning.present? %>
+      <%= link_to 'meaning', meaning_path(dictionary_id: dictionary.id) %>
+    <% end %>
   <% end %>
-<% end %>
-        <div class="sort">
-        <%= link_to '新しい順', dictionaries_path(latest: "true") %>
-        ｜
-        <%= link_to '古い順', dictionaries_path(old: "true") %>
-        ｜
-        <%= link_to 'ランダム', dictionaries_path(random: "true") %>
-        </div> 
-      </div>
-    </div>
-    <div class="contents row">
-      <% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
-      <%= render partial: "dictionary", locals: { dictionary: dictionary } %>
-      <% end %>
-      <div class="page"><%= paginate @dictionaries %></div>
-    </div>
+  <div class="sort">
+    <%= link_to '新しい順', dictionaries_path(latest: "true") %>
+    ｜
+    <%= link_to '古い順', dictionaries_path(old: "true") %>
+    ｜
+    <%= link_to 'ランダム', dictionaries_path(random: "true") %>
+  </div> 
+</div>
+</div>
+<div class="contents row">
+  <% @dictionaries.where(user_id: current_user.id).each do |dictionary| %>
+    <%= render partial: "dictionary", locals: { dictionary: dictionary } %>
+  <% end %>
+  <div class="page"><%= paginate @dictionaries.where(user_id: current_user.id) %></div>
+</div>
