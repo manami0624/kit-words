@@ -1,10 +1,14 @@
 # アプリケーション名
-KITwords(キットワーズ)
+**KITwords(キットワーズ)**
+<br>
+〜K(韓国語で)IT用語を覚える為の単語帳〜
 
 <br>
 
 # アプリケーション概要
 韓国語に特化した単語帳アプリです。
+マウスオーバーで日本語の意味が表示され、meaningボタンを押すと単語の意味を表示できます。
+[![Image from Gyazo](https://i.gyazo.com/f106414e7954f2be75171d3d6fe32038.gif)](https://gyazo.com/f106414e7954f2be75171d3d6fe32038)
 
 <br>
 
@@ -92,3 +96,4 @@ GitHub / Visual Studio Code / draw.io
 - 音声再生機能
 - レスポンシブ対応
 - できた回数カウント機能
+- 投稿のフォルダ分け
