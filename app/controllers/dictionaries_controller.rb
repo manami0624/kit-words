@@ -27,7 +27,7 @@ class DictionariesController < ApplicationController
   def create
     @dictionary = Dictionary.new(dictionary_params)
     if @dictionary.save
-      redirect_to dictionaries_path
+      render 'create'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class DictionariesController < ApplicationController
 
   def update
     if @dictionary.update(dictionary_params)
-      redirect_to dictionaries_path
+      render 'create'
     else
       render :edit
     end
