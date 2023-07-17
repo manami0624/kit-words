@@ -1,6 +1,10 @@
 <div class="contents row">
   <div class="success">
-    <h3>単語登録が完了しました。</h3>
-    <%= link_to '単語一覧へ戻る', dictionaries_path, class:"btn"%>
+    <% if action_name == 'create' %>
+      <h3>単語登録が完了しました。</h3>
+    <% elsif action_name == 'update' %>
+      <h3>編集が完了しました。</h3>
+    <% end %>
+    <%= link_to '単語一覧へ戻る', dictionaries_path, class: "btn" %>
   </div>
 </div>
