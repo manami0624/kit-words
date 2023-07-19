@@ -42,6 +42,13 @@ https://kit-words.onrender.com
 
 <br>
 
+# 工夫した点
+投稿すると、完了画面にモチベーションの上がる名言がランダムで表示されます。
+
+[![Image from Gyazo](https://i.gyazo.com/3de8041da72e61ef9f2fa99be3e46131.png)](https://gyazo.com/3de8041da72e61ef9f2fa99be3e46131)
+
+<br>
+
 # データベース設計
 [![Image from Gyazo](https://i.gyazo.com/04f11df2252fd5ed97ddefac86268bc8.png)](https://gyazo.com/04f11df2252fd5ed97ddefac86268bc8)
 
