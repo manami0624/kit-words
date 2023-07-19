@@ -1036,10 +1036,6 @@ form input[type="submit"] {
   font-size: 18px;
 }
 
-/* form input[type="submit"]:hover {
-  background-color: #44d9e6;
-} */
-
 .container {
   margin: 20px 0;
   padding: 30px;
@@ -1065,8 +1061,6 @@ footer {
 footer p {
   text-align: center;
 }
-
-
 
 
 .search_container{
